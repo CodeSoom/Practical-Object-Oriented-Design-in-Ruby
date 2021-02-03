@@ -76,3 +76,270 @@
 
 ## Duck typing이란?
 
+수리점
+
+수리
+ - 분해
+ - 수리
+ if (paintable()) {
+   칠하다
+ }
+ - 조립
+
+책상
+ - 분해
+ - 수리
+ - 칠하다(Nothing)
+ - 조립
+ @override
+ paintable() {
+   return false;
+ }
+
+카메라
+ - 분해
+ - 수리
+ @overide
+ - 칠하다 (기름칠)
+  
+ - 조립
+
+자전거
+ - 분해
+ - 수리
+ - 기름칠
+ - 조립
+노트북
+ - 분해
+ - 수리
+ - 써멀구리스바르기
+ - 조립
+키보드
+ - 분해
+ - 수리
+ - 윤활유바르기
+ - 조립
+
+```typescript
+BadRequest
+InternalServerError
+ProductNotFoundError
+
+handleError(err Error) {
+  show(err.message);
+
+  if (err.data) {
+    // doSomething
+  }
+}
+
+catch (err Error) {
+  handleError(err);
+  // if (err instanceof BadRequest) {
+  //   show(err.message);
+  // }
+
+  // if (err instanceof ProductNotFoundError) {
+  //   show(err.message);
+  //   products.map(doSomething);
+  // }
+
+  // if (err instanceof InternalServerError) {
+
+  // }
+}
+```
+
+## 상속이란?
+
+자동화된 메시지 전달 시스템이다. 상위 클래스는 일반화된 행동을 가지고 있고, 하위 클래스는 구체적 행동을 가지고 있다.
+
+### 리스코프 취환 원칙
+
+하위클래스가 상위클래스를 대체할 수 있다.
+
+```javascript
+class Studuent {
+  getGrade(): number;
+}
+
+const grade: Grade = student.getGrade();
+
+class ElementaryStudent extends Studuent {
+  getGrade() {
+    return 1 ~ 6;
+  }
+}
+
+class MiddleStduent extends Studuent {
+  getGrade() {
+    return 1 ~ 3;
+  }
+}
+
+class Duck {
+  fly() {
+    return 날개;
+  }
+}
+
+RubberDuck.fly()
+
+class RubberDuck {
+  fly() {
+    return null;
+  }
+}
+```
+
+## 오리 타입 이란?
+
+요구하는 행동을 구현했다면 그 타입으로 취급하는 것.
+
+## 조합이란?
+
+독립적인 객체를 보다 크고 복합적인 것으로 통합하는 것
+
+```javascript
+class Coffee() {
+  make() {
+
+  }
+
+  boil() {
+
+  }
+}
+
+class FruitAde() {
+  make() {
+  }
+
+  shake() {
+
+  }
+}
+
+class 스무디() {
+  make() {
+
+  }
+
+  shake() {
+
+  }
+}
+
+class 흑당밀크티() {
+  make() {
+
+  }
+}
+
+class 달고나커피() {
+  make() {
+    
+  }
+
+  shake() {
+
+  }
+}
+```
+
+```javascript
+class Beberage() {
+  make() {}
+  shake() {
+
+  }
+  boil() {
+
+  }
+}
+
+class Coffee() extends Beberage {
+  make() {}
+  shake() {
+    // Do nothing
+  }
+  boil() {}
+}
+
+class 스무디() extends Beberage {
+  make() {}
+  shake() {}
+  boil() {
+    // Do nothing
+  }
+}
+```
+
+```javascript
+interface Boilable {
+  boil();
+}
+
+interface Shakable {
+  shake();
+}
+
+class Coffee() {
+}
+
+class 스무디() extends Beberage implements Shakable {
+  shake() {}
+}
+
+Coffee
+
+Non Coffee
+
+Beberage.shake();
+```
+
+is-a => 상속써라
+아메리카노는 커피다.
+디카페인 아메리카노는 커피다.
+
+behaves-like-a 오리 타입
+아메리카노 implements Boilable
+레몬에이드
+
+아메리카노는.boil();
+레몬에이드.boil(); (X)
+
+아메라카노는 끓을 수 있다.
+디카페인 아메리카노도 끓을 수 있다.
+차도 끓을 수 있다.
+
+has-a => 조합써라
+커피는 시럽을 가지고 있다.
+커피는 첨가물 가지고 있다.
+
+## 조합이란?
+
+## 상속과 조합
+
+## 테스트
+
+### private 메서드를 테스트를 안해야하는 이유는?
+
+자주 변경되어서.
+애플리케이션 관점에서는 프라이빗 메서드는 없는 것이다.
+
+### 수정하기 쉬운 코드를 작성하는데 필요한 세가지는?
+
+1. 객체지향 디자인을 이해해햔다.
+2. 리팩터링을 해야한다.
+3. 테스트를 작성할 수 있어야 한다.
+
+### 테스트를 짜야하는 이유는?
+
+변경을 했을 때, 우리의 코드에 어떤 영향을 주는지 테스트가 확인해준다.
+문서를 제공해준다. 테스트를 통해서 어떻게 동작하는 기술할 수 있다.
+고장났을 때 어디가 고장났는지 빠르게 확인할 수 있다. 그래서 비용을 줄여준다.
+코드를 빠르게 사용해볼 수 있다.
+디자인의 결점을 발견할 수 있다.
+추상화를 돕기
+결정을 미룰 수 있다.
